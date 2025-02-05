@@ -1,32 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Posts from "../components/Posts";
 import PostForm from "../components/PostForm";
 
 export default function Home() {
 
-    const [posts, setPosts] = useState([
-        {
-            title: 'Title 1',
-            subtitle: 'Subtitle 1',
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        },
-        {
-            title: 'Title 2',
-            subtitle: 'Subtitle 2',
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        },
-        {
-            title: 'Title 3',
-            subtitle: 'Subtitle 3',
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        },
-    ])
+    const [posts, setPosts] = useState(() => {
+        const savedPosts = localStorage.getItem("posts");
+        return savedPosts ? JSON.parse(savedPosts): []
+    })
+
+    useEffect(() => {
+        localStorage.setItem("posts", JSON.stringify(posts))
+    }, [posts]) // Обязательно должен принимать массив
 
     const navigate = useNavigate()
 
     const handlePostView = (post, index) => {
-        navigate(`/post/${index}`, { state: { post } })
+        console.log(post);
+        navigate(`/post/${index}`, { state: post })
     }
 
     const addPost = (newPost) => {

@@ -76,5 +76,15 @@ body {
 }
 
 .post__title {
-    padding: 5px;
+    padding: 2.5px;
+    cursor: pointer;
+}
+
+.post__title:hover {
+    text-decoration: underline;
+}
+
+/* Post.jsx */
+.post-page_item {
+    margin: 0 15px;
 }
