@@ -22,7 +22,7 @@ export default function Home() {
     }
 
     const addPost = (newPost) => {
-        setPosts(() => [newPost, ...posts])
+        setPosts((prev) => ([newPost, ...prev]))
     }
     
     const deletePost = (id) => {

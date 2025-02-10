@@ -22,9 +22,9 @@ export default function PostForm({ addPost }) {
 
     return (
         <form className="form form-posts" action="#" onSubmit={handleSubmit}>
-            <input className="form-posts__title" type="text" value={title} name="title" placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
-            <input className="form-posts__subtitle" type="text" value={subtitle} name="subtitle" placeholder="Subtitle" onChange={(e) => setSubtitle(e.target.value)} />
-            <textarea rows="4" cols="50" className="form-posts__text" type="text" value={text} name="text" placeholder="Text" onChange={(e) => setText(e.target.value)} />
+            <input className="form-posts__title" required type="text" value={title} name="title" placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
+            <input className="form-posts__subtitle" required type="text" value={subtitle} name="subtitle" placeholder="Subtitle" onChange={(e) => setSubtitle(e.target.value)} />
+            <textarea rows="4" cols="50" className="form-posts__text" required type="text" value={text} name="text" placeholder="Text" onChange={(e) => setText(e.target.value)} />
 
             <button type="submit">Add</button>
         </form>
